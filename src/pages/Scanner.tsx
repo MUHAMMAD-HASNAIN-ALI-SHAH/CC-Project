@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFileStore } from "../store/store";
+import { useScannerStore } from "../store/useScannerStore";
 
 const Scanner = () => {
   const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const { inputFileData } = useFileStore();
+  const { inputFileData } = useScannerStore();
 
   const handleLog = () => {
     if (selectedFile) {

@@ -56,7 +56,7 @@ interface FileState {
     };
 }
 
-export const useFileStore = create<FileState>((set) => ({
+export const useScannerStore = create<FileState>((set) => ({
     inputFile: {
         filename: '',
         content: '',

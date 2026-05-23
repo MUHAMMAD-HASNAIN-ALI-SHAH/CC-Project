@@ -1,8 +1,8 @@
-import { useFileStore } from "../../store/store";
+import { useScannerStore } from "../../store/useScannerStore";
 import OutputDataHeader from "./OutputDataHeader";
 
 const OutputScreen = () => {
-  const { output, inputFile } = useFileStore();
+  const { output, inputFile } = useScannerStore();
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center p-4 md:p-10 w-full font-mono">
@@ -10,7 +10,7 @@ const OutputScreen = () => {
         <h1 className="text-sm font-bold text-blue-600 mb-2 self-start md:self-center">
           [ SYSTEM STATUS: READY ]
         </h1>
-        <button className="text-sm text-white hover:text-gray-700 transition-colors bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 hover:text-white" onClick={() => window.history.back()}>
+        <button className="text-sm text-white hover:text-gray-700 transition-colors bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700" onClick={() => window.history.back()}>
           back
         </button>
       </div>

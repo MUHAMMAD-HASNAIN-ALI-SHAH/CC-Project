@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useParserStore } from "../store/useParserStore";
 
 const Parser = () => {
   const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const { inputFileData } = useParserStore();
 
   const handleLog = () => {
     if (selectedFile) {
       const reader = new FileReader();
       reader.onload = (e) => {
         const content = e.target?.result;
-        // inputFileData({
-        //   filename: selectedFile.name,
-        //   content: content as string,
-        // });
+        inputFileData({
+          filename: selectedFile.name,
+          content: content as string,
+        });
       };
       reader.onerror = () => {
         console.error("Error reading the file.");
