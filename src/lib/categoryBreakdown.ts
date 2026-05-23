@@ -19,8 +19,6 @@ const categoryBreakdown = (tokens: any[], content: string) => {
         percentage: parseFloat(((count / tokens.length) * 100).toFixed(2))
     }));
 
-    console.log("Category Breakdown:", result);
-
     return result;
 };
 

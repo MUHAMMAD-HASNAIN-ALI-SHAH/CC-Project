@@ -1,21 +1,29 @@
-import { useFileStore } from "../store/store";
-import OutputDataHeader from "./output-data/OutputDataHeader";
+import { useFileStore } from "../../store/store";
+import OutputDataHeader from "./OutputDataHeader";
 
 const OutputScreen = () => {
   const { output, inputFile } = useFileStore();
 
   return (
-    <div className='bg-gray-100 min-h-screen flex flex-col items-center p-4 md:p-10 w-full font-mono'>
-      <h1 className='text-sm font-bold text-blue-600 mb-2 self-start md:self-center'>[ SYSTEM STATUS: READY ]</h1>
-      
+    <div className="bg-gray-100 min-h-screen flex flex-col items-center p-4 md:p-10 w-full font-mono">
+      <div className="w-full max-w-5xl border-none border-gray-300 px-4 py-2 flex items-center justify-between">
+        <h1 className="text-sm font-bold text-blue-600 mb-2 self-start md:self-center">
+          [ SYSTEM STATUS: READY ]
+        </h1>
+        <button className="text-sm text-white hover:text-gray-700 transition-colors bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 hover:text-white" onClick={() => window.history.back()}>
+          back
+        </button>
+      </div>
+
       <div className="w-full max-w-5xl bg-white shadow-lg border border-gray-300 p-4 md:p-8 rounded-sm">
-        
         {/* 1. Header Section */}
         <OutputDataHeader />
 
         {/* 2. File Metadata */}
         <div className="mb-8 text-sm text-gray-800 leading-relaxed">
-          <p>INPUT FILE: <span className="font-bold">{inputFile.filename}</span></p>
+          <p>
+            INPUT FILE: <span className="font-bold">{inputFile.filename}</span>
+          </p>
           <p>TOTAL LINES: {output.totalLines}</p>
           <p>LINES WITH CODE: {output.codeLines}</p>
           <p>TOTAL TOKENS: {output.tokenCount}</p>
@@ -44,10 +52,14 @@ const OutputScreen = () => {
               {output.categoryData?.map((row, index) => (
                 <tr key={index} className="hover:bg-gray-50">
                   <td className="py-1 pr-4">{row.category}</td>
-                  <td className="py-1 pr-4 text-blue-700">| {row.token_type}</td>
+                  <td className="py-1 pr-4 text-blue-700">
+                    | {row.token_type}
+                  </td>
                   <td className="py-1 pr-4">| {row.quantity}</td>
                   <td className="py-1 pr-4">| {row.percentage}</td>
-                  <td className="py-1 text-xs text-gray-500">| {row.line.join(", ")}</td>
+                  <td className="py-1 text-xs text-gray-500">
+                    | {row.line.join(", ")}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -126,20 +138,60 @@ const OutputScreen = () => {
         </div>
 
         <div className="mb-8 text-sm text-gray-800 leading-relaxed">
-          <p>TOTAL TOKENS: <span className="font-bold">{output.tokenCount}</span></p>
-          <p>UNIQUE TOTAL TOKENS: <span className="font-bold">{output.totalTokensTypes}</span></p>
+          <p>
+            TOTAL TOKENS: <span className="font-bold">{output.tokenCount}</span>
+          </p>
+          <p>
+            UNIQUE TOTAL TOKENS:{" "}
+            <span className="font-bold">{output.totalTokensTypes}</span>
+          </p>
           <p>TOTAL LINES WITH CODE: {output.codeLines}</p>
           <p>EMPTY/IGNORE LINES: {output.totalLines - output.codeLines}</p>
         </div>
 
         <div className="mb-8 text-sm text-gray-800 leading-relaxed">
-          <p>MOST FREQUENT TOKEN: <span className="font-bold">{output.mostFrequentToken.type}</span> ({output.mostFrequentToken.count} occurrences, {((output.mostFrequentToken.count / output.tokenCount) * 100).toFixed(2)}%)</p>
-          <p>LEAST FREQUENT TOKEN: <span className="font-bold">{output.leastFrequentToken.type}</span> ({output.leastFrequentToken.count} occurrences, {((output.leastFrequentToken.count / output.tokenCount) * 100).toFixed(2)}%)</p>
+          <p>
+            MOST FREQUENT TOKEN:{" "}
+            <span className="font-bold">{output.mostFrequentToken.type}</span> (
+            {output.mostFrequentToken.count} occurrences,{" "}
+            {(
+              (output.mostFrequentToken.count / output.tokenCount) *
+              100
+            ).toFixed(2)}
+            %)
+          </p>
+          <p>
+            LEAST FREQUENT TOKEN:{" "}
+            <span className="font-bold">{output.leastFrequentToken.type}</span>{" "}
+            ({output.leastFrequentToken.count} occurrences,{" "}
+            {(
+              (output.leastFrequentToken.count / output.tokenCount) *
+              100
+            ).toFixed(2)}
+            %)
+          </p>
         </div>
         <div className="mb-8 text-sm text-gray-800 leading-relaxed">
-          <p>AVERAGE TOKEN PER LINE: <span className="font-bold">{output.averageTokensPerLine.toFixed(2)}</span></p>
-          <p>MAXIMUM TOKEN IN A SINGLE LINE: <span className="font-bold">{output.mostFrequentTokenInSingleLine.count} (Line {output.mostFrequentTokenInSingleLine.line})</span></p>
-          <p>MINIMUM TOKEN IN A SINGLE LINE: <span className="font-bold">{output.leastFrequentTokenInSingleLine.count} (Line {output.leastFrequentTokenInSingleLine.line})</span></p>
+          <p>
+            AVERAGE TOKEN PER LINE:{" "}
+            <span className="font-bold">
+              {output.averageTokensPerLine.toFixed(2)}
+            </span>
+          </p>
+          <p>
+            MAXIMUM TOKEN IN A SINGLE LINE:{" "}
+            <span className="font-bold">
+              {output.mostFrequentTokenInSingleLine.count} (Line{" "}
+              {output.mostFrequentTokenInSingleLine.line})
+            </span>
+          </p>
+          <p>
+            MINIMUM TOKEN IN A SINGLE LINE:{" "}
+            <span className="font-bold">
+              {output.leastFrequentTokenInSingleLine.count} (Line{" "}
+              {output.leastFrequentTokenInSingleLine.line})
+            </span>
+          </p>
         </div>
 
         <div className="w-full overflow-hidden whitespace-nowrap mb-2 mt-10">

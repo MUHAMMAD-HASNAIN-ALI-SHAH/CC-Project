@@ -1,17 +1,20 @@
-import Header from "./components/Header";
-import InputComponent from "./components/InputComponent";
-import OutputScreen from "./components/OutputScreen";
-import { useFileStore } from "./store/store";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Scanner from "./pages/Scanner";
+import ScannerOutput from "./pages/ScannerOutput";
+import Parser from "./pages/Parser";
+import ParserOutput from "./pages/ParserOutput";
 
 function App() {
-
-  const {output} = useFileStore();
-
   return (
     <>
-      <Header />
-      <InputComponent />
-      {output.totalLines !=0 && <OutputScreen />}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/scanner" element={<Scanner />} />
+        <Route path="/parser" element={<Parser />} />
+        <Route path="/scanner-output" element={<ScannerOutput />} />
+        <Route path="/parser-output" element={<ParserOutput />} />
+      </Routes>
     </>
   );
 }
