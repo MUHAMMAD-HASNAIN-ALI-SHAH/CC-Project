@@ -88,7 +88,7 @@ export default function WPPCompiler() {
               </p>
               <button
                 onClick={() => navigate(f.route)}
-                className="self-start mt-1 bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs font-bold tracking-widest px-4 py-2 rounded-lg transition-colors"
+                className="cursor-pointer self-start mt-1 bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs font-bold tracking-widest px-4 py-2 rounded-lg transition-colors"
               >
                 {f.label}
               </button>

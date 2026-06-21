@@ -10,7 +10,7 @@ const OutputScreen = () => {
         <h1 className="text-sm font-bold text-blue-600 mb-2 self-start md:self-center">
           [ SYSTEM STATUS: READY ]
         </h1>
-        <button className="text-sm text-white hover:text-gray-700 transition-colors bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700" onClick={() => window.history.back()}>
+        <button className="cursor-pointer text-sm text-white transition-colors bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700" onClick={() => window.history.back()}>
           back
         </button>
       </div>

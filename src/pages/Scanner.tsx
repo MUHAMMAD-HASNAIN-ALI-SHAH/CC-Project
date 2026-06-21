@@ -28,10 +28,18 @@ const Scanner = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-linear-to-br from-blue-200 via-blue-100 to-blue-300 p-8">
-      <h1 className="text-5xl font-bold text-blue-700 mb-2">File Upload</h1>
-      <p className="text-lg text-blue-400 mb-8">
-        Select your source file to analyze
-      </p>
+      <div className="relative flex flex-col w-full max-w-md">
+        <h1 className="text-5xl font-bold text-blue-700 mb-2">File Upload</h1>
+        <p className="text-lg text-blue-400 mb-8">
+          Select your source file to analyze
+        </p>
+        <button
+          className="absolute cursor-pointer right-0 bottom-1/2 text-sm text-white transition-colors bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700"
+          onClick={() => window.history.back()}
+        >
+          back
+        </button>
+      </div>
 
       <div className="bg-white rounded-2xl shadow-lg px-10 py-10 w-full max-w-md flex flex-col gap-4">
         <input

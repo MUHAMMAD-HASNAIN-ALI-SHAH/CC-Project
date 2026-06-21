@@ -57,7 +57,7 @@ const ErrorInCodeLine = () => {
           </span>
         </div>
 
-        {/* No content state */}
+        {/* Non content state */}
         {!inputFile.content ? (
           <div className="flex flex-col items-center justify-center py-16 text-gray-400 gap-3 bg-gray-950">
             <span className="text-5xl">📂</span>
@@ -99,7 +99,7 @@ const ErrorInCodeLine = () => {
                     </span>
                   </div>
 
-                  {/* Error messages below the line */}
+                  {/* Errors messages below the line if any */}
                   {hasError && lineErrors.map((err, i) => (
                     <div
                       key={i}
